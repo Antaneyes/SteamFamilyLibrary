@@ -40,5 +40,16 @@ dotnet restore SteamFamilyLibrary/SteamFamilyLibrary.csproj
 dotnet build SteamFamilyLibrary/SteamFamilyLibrary.csproj -c Release
 ```
 
-El `dll` resultante junto al `extension.yaml` debe copiarse a una carpeta dentro de `Playnite/Extensions`.
+## Instalación
+
+### Opción 1: copia manual
+
+1. Crea una carpeta dentro de `Playnite/Extensions`, por ejemplo `SteamFamilyGroup`.
+2. Copia **todos** los archivos generados en `SteamFamilyLibrary/bin/Release/net472/` (SteamFamilyLibrary.dll y el resto de dependencias `Newtonsoft.Json.dll`, `System.Text.Json.dll`, etc.).
+3. Copia `extension.yaml` a la misma carpeta.
+4. Reinicia Playnite o usa `Para desarrolladores → Recargar scripts`.
+
+### Opción 2: archivo `.pext`
+
+En la pestaña **Releases** de este repositorio encontrarás un `.pext` empaquetado (ej. `SteamFamilyGroup-v0.1.0-beta.pext`). Descárgalo y, desde Playnite, ve a `Extensiones → Instalar desde archivo` para importarlo directamente.
 

@@ -8,6 +8,7 @@ obj/
 /SteamFamilyLibrary/bin/
 /SteamFamilyLibrary/obj/
 /SteamFamilyLibrary/.vs/
+dist/
 *.pext
 *.zip
 *.pdb
