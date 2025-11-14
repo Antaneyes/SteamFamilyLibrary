@@ -13,7 +13,7 @@ Este proyecto implementa un plugin de tipo **GameLibrary** para Playnite que agr
 ## Requisitos previos
 
 1. **Clave de la Web API de Steam** (https://steamcommunity.com/dev/apikey).
-2. **SteamID 64** (uno por cada integrante del grupo familiar) (https://steamid.io).
+2. **SteamID 64** (uno por cada integrante del grupo familiar) (Puedes sacarlo copiando la url del perfil y poniendola en https://steamid.io).
 3. Playnite 10 u 11 con soporte para extensiones .NET (`RequiresApiVersion: 6.11.0`). Documentación oficial: [Introducción a extensiones](https://api.playnite.link/docs/tutorials/extensions/intro.html).
 
 ## Configuración
