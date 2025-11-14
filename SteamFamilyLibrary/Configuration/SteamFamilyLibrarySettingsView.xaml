@@ -1,0 +1,53 @@
+<UserControl x:Class="SteamFamilyLibrary.Configuration.SteamFamilyLibrarySettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignWidth="600"
+             d:DesignHeight="400">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="10" MaxWidth="640">
+            <TextBlock Text="Clave de la Web API de Steam"
+                       FontWeight="Bold"/>
+            <TextBox Margin="0,4,0,8"
+                     Text="{Binding Settings.SteamApiKey, UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="Puedes crear una clave en https://steamcommunity.com/dev/apikey"/>
+
+            <TextBlock Text="SteamID 64 de los miembros del grupo familiar (uno por línea o separados por coma)"
+                       FontWeight="Bold"
+                       Margin="0,12,0,0"/>
+            <TextBox Margin="0,4,0,8"
+                     Text="{Binding Settings.FamilySteamIds, UpdateSourceTrigger=PropertyChanged}"
+                     AcceptsReturn="True"
+                     Height="100"
+                     VerticalScrollBarVisibility="Auto"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+                <StackPanel Width="150" Margin="0,0,12,0">
+                    <TextBlock Text="Idioma metadatos" FontWeight="Bold"/>
+                    <TextBox Margin="0,4,0,0"
+                             Text="{Binding Settings.MetadataLanguage, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+                <StackPanel Width="150" Margin="0,0,12,0">
+                    <TextBlock Text="Región de precios" FontWeight="Bold"/>
+                    <TextBox Margin="0,4,0,0"
+                             Text="{Binding Settings.MetadataRegion, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+                <StackPanel Width="200">
+                    <TextBlock Text="Retardo entre peticiones (ms)" FontWeight="Bold"/>
+                    <TextBox Margin="0,4,0,0"
+                             Text="{Binding Settings.RequestDelayMs, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+            </StackPanel>
+
+            <CheckBox Content="Descargar metadatos automáticamente"
+                      IsChecked="{Binding Settings.FetchMetadataOnImport}"
+                      Margin="0,12,0,0"/>
+
+            <CheckBox Content="Usar la caché local si hay errores de red"
+                      IsChecked="{Binding Settings.UseCacheWhenOffline}"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
+
