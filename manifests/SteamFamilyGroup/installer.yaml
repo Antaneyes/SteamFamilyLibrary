@@ -1,0 +1,8 @@
+AddonId: SteamFamilyGroup
+Packages:
+  - Version: 0.1.1
+    RequiredApiVersion: 6.11.0
+    ReleaseDate: 2025-11-15
+    PackageUrl: https://github.com/Antaneyes/SteamFamilyLibrary/releases/download/v0.1.1-beta/SteamFamilyGroup-v0.1.1-beta.pext
+    Changelog:
+      - First English localization release
