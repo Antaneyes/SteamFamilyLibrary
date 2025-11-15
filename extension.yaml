@@ -1,7 +1,7 @@
 Id: SteamFamilyGroup
 Name: Steam Family Group
 Author: Antaneyes
-Version: 0.1.0
+Version: 0.1.1
 Module: SteamFamilyLibrary.dll
 Type: GameLibrary
 Links:
