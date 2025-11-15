@@ -52,7 +52,7 @@ namespace SteamFamilyLibrary.Services
             }
             catch (Exception ex)
             {
-                logger.Error(ex, "No se pudo sincronizar la biblioteca familiar de Steam. Se intentará usar la caché.");
+                logger.Error(ex, "Failed to synchronize the Steam family library. Falling back to cache if enabled.");
                 if (settings.UseCacheWhenOffline)
                 {
                     var cache = cacheStore.Load();

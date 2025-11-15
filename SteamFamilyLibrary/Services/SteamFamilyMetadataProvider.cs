@@ -45,7 +45,7 @@ namespace SteamFamilyLibrary.Services
             }
             catch (Exception ex)
             {
-                Logger.Warn(ex, $"No se pudieron descargar los metadatos para la app {appId}.");
+                Logger.Warn(ex, $"Failed to download metadata for app {appId}.");
                 return new GameMetadata();
             }
         }

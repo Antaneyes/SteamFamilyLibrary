@@ -24,8 +24,8 @@ namespace SteamFamilyLibrary
         private readonly SteamFamilyService familyService;
         private readonly SteamMetadataService metadataService;
         private readonly SteamWebClient webClient;
-        private readonly MetadataNameProperty sourceProperty = new MetadataNameProperty("Grupo familiar de Steam");
-        private readonly MetadataNameProperty categoryProperty = new MetadataNameProperty("Familia Steam");
+        private readonly MetadataNameProperty sourceProperty = new MetadataNameProperty("Steam Family Group");
+        private readonly MetadataNameProperty categoryProperty = new MetadataNameProperty("Steam Family");
 
         public SteamFamilyLibraryPlugin(IPlayniteAPI api) : base(api)
         {
@@ -52,7 +52,7 @@ namespace SteamFamilyLibrary
 
         public override Guid Id { get; } = Guid.Parse("961a2c92-6384-4d00-b5e7-66f4b70ac37c");
 
-        public override string Name => "Grupo familiar de Steam";
+        public override string Name => "Steam Family Group";
 
         public override LibraryClient Client => null;
 
@@ -72,7 +72,7 @@ namespace SteamFamilyLibrary
 
             if (!settingsViewModel.Settings.IsConfigured)
             {
-                Logger.Warn("Se solicitó importar la biblioteca familiar de Steam pero la extensión no está configurada.");
+                Logger.Warn("Steam family import requested but the extension is not configured.");
                 yield break;
             }
 
@@ -87,7 +87,7 @@ namespace SteamFamilyLibrary
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Error importando los juegos del grupo familiar de Steam.");
+                Logger.Error(ex, "Failed to import Steam family games.");
                 throw;
             }
 
@@ -146,20 +146,20 @@ namespace SteamFamilyLibrary
             {
                 new GameAction
                 {
-                    Name = "Instalar en Steam",
+                    Name = "Install via Steam",
                     Type = GameActionType.URL,
                     Path = $"steam://install/{game.AppId}"
                 },
                 new GameAction
                 {
-                    Name = "Jugar en Steam",
+                    Name = "Play via Steam",
                     Type = GameActionType.URL,
                     Path = $"steam://run/{game.AppId}",
                     IsPlayAction = true
                 },
                 new GameAction
                 {
-                    Name = "Abrir en la tienda",
+                    Name = "Open in Steam Store",
                     Type = GameActionType.URL,
                     Path = storeUrl
                 }

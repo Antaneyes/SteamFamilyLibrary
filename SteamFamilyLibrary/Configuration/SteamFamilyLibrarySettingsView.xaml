@@ -8,13 +8,13 @@
              d:DesignHeight="400">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="10" MaxWidth="640">
-            <TextBlock Text="Clave de la Web API de Steam"
+            <TextBlock Text="Steam Web API key"
                        FontWeight="Bold"/>
             <TextBox Margin="0,4,0,8"
                      Text="{Binding Settings.SteamApiKey, UpdateSourceTrigger=PropertyChanged}"
-                     ToolTip="Puedes crear una clave en https://steamcommunity.com/dev/apikey"/>
+                     ToolTip="Create a key at https://steamcommunity.com/dev/apikey"/>
 
-            <TextBlock Text="SteamID 64 de los miembros del grupo familiar (uno por línea o separados por coma)"
+            <TextBlock Text="Family members SteamID64 (one per line or separated by commas)"
                        FontWeight="Bold"
                        Margin="0,12,0,0"/>
             <TextBox Margin="0,4,0,8"
@@ -25,27 +25,27 @@
 
             <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
                 <StackPanel Width="150" Margin="0,0,12,0">
-                    <TextBlock Text="Idioma metadatos" FontWeight="Bold"/>
+                    <TextBlock Text="Metadata language" FontWeight="Bold"/>
                     <TextBox Margin="0,4,0,0"
                              Text="{Binding Settings.MetadataLanguage, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
                 <StackPanel Width="150" Margin="0,0,12,0">
-                    <TextBlock Text="Región de precios" FontWeight="Bold"/>
+                    <TextBlock Text="Price region" FontWeight="Bold"/>
                     <TextBox Margin="0,4,0,0"
                              Text="{Binding Settings.MetadataRegion, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
                 <StackPanel Width="200">
-                    <TextBlock Text="Retardo entre peticiones (ms)" FontWeight="Bold"/>
+                    <TextBlock Text="Request delay (ms)" FontWeight="Bold"/>
                     <TextBox Margin="0,4,0,0"
                              Text="{Binding Settings.RequestDelayMs, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
             </StackPanel>
 
-            <CheckBox Content="Descargar metadatos automáticamente"
+            <CheckBox Content="Download metadata automatically"
                       IsChecked="{Binding Settings.FetchMetadataOnImport}"
                       Margin="0,12,0,0"/>
 
-            <CheckBox Content="Usar la caché local si hay errores de red"
+            <CheckBox Content="Use local cache if the network fails"
                       IsChecked="{Binding Settings.UseCacheWhenOffline}"/>
         </StackPanel>
     </ScrollViewer>

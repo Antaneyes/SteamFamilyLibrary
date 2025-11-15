@@ -12,4 +12,5 @@ dist/
 *.pext
 *.zip
 *.pdb
+*.code-workspace
 

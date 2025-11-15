@@ -43,12 +43,12 @@ namespace SteamFamilyLibrary.Configuration
 
             if (string.IsNullOrWhiteSpace(Settings.SteamApiKey))
             {
-                errors.Add("Debes introducir una clave de la Web API de Steam.");
+                errors.Add("Enter your Steam Web API key.");
             }
 
             if (!Settings.GetNormalizedSteamIds().Any())
             {
-                errors.Add("Agrega al menos un SteamID 64 del grupo familiar.");
+                errors.Add("Add at least one family member SteamID64.");
             }
 
             return errors.Count == 0;

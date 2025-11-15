@@ -1,11 +1,11 @@
 Id: SteamFamilyGroup
-Name: Steam Grupo Familiar
+Name: Steam Family Group
 Author: Antaneyes
 Version: 0.1.0
 Module: SteamFamilyLibrary.dll
 Type: GameLibrary
 Links:
-  - Name: Código fuente
+  - Name: Source code
     Url: https://github.com/Antaneyes/SteamFamilyLibrary
 RequiresApiVersion: 6.11.0
 

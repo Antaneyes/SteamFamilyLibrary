@@ -1,55 +1,54 @@
-# Playnite – integrar biblioteca del grupo familiar de Steam
+# Playnite – Steam family library integration
 
-Este proyecto implementa un plugin de tipo **GameLibrary** para Playnite que agrega una nueva fuente llamada `Grupo familiar de Steam`. La extensión agrega automáticamente a la colección los juegos pertenecientes a los miembros configurados del grupo familiar y descarga sus metadatos desde la tienda de Steam.
+This repository contains a **GameLibrary** plugin for Playnite that adds a new source called `Steam Family Group`. It aggregates the libraries of the Steam Family Sharing members you configure and keeps their metadata in sync with the Steam store.
 
-## Características
+## Features
 
-- Consulta la Web API de Steam (`IPlayerService/GetOwnedGames`) para cada SteamID miembro del grupo familiar.
-- Fusiona los catálogos en una base local (`steamFamilyGamesCache.json`) para detectar duplicados y conservar propietarios.
-- Registra los juegos en Playnite con la fuente personalizada “Grupo familiar de Steam” y una categoría “Familia Steam” para filtrarlos rápidamente.
-- Descarga descripción, carátula y fondo desde `store.steampowered.com` si se mantiene activada la opción “Descargar metadatos automáticamente”.
-- Soporta idioma/región configurables y permite reusar la caché cuando Steam no responde.
+- Calls the official Steam Web API (`IPlayerService/GetOwnedGames`) for every configured SteamID64.
+- Merges the responses into a local cache (`steamFamilyGamesCache.json`) so you can browse the combined collection even when the API is unavailable.
+- Imports the games into Playnite with the custom source `Steam Family Group` and the category `Steam Family` for easy filtering.
+- Downloads descriptions, covers and backgrounds from `store.steampowered.com` when metadata download is enabled.
+- Provides “Install via Steam” and “Play via Steam” actions that launch the official Steam client through the `steam://` protocol.
 
-## Requisitos previos
+## Requirements
 
-1. **Clave de la Web API de Steam** (https://steamcommunity.com/dev/apikey).
-2. **SteamID 64** (uno por cada integrante del grupo familiar) (Puedes sacarlo copiando la url del perfil y poniendola en https://steamid.io).
-3. Playnite 10 u 11 con soporte para extensiones .NET (`RequiresApiVersion: 6.11.0`). Documentación oficial: [Introducción a extensiones](https://api.playnite.link/docs/tutorials/extensions/intro.html).
+1. **Steam Web API key** (https://steamcommunity.com/dev/apikey)
+2. **SteamID64** for each account in your family sharing group (you can copy their profile URL and paste it into https://steamid.io to obtain the ID; add one per line or separate them with commas).
+3. Playnite 10/11 with .NET plugin support (`RequiresApiVersion: 6.11.0`). See the [official extension docs](https://api.playnite.link/docs/tutorials/extensions/intro.html).
 
-## Configuración
+## Configuration
 
-1. Abre Playnite → `Ajustes` → `Extensiones` → selecciona “Grupo familiar de Steam”.
-2. Introduce la clave API y pega los SteamID 64 (se aceptan saltos de línea o comas).
-3. Opcional: ajusta idioma/región para metadatos y el retardo entre peticiones.
-4. Marca “Descargar metadatos automáticamente” para obtener carátulas y descripciones desde Steam.
-5. Guarda los cambios e inicia la importación (`Biblioteca → Actualizar librerías`).
+1. Open Playnite → `Settings` → `Extensions` → select “Steam Family Group”.
+2. Paste your Web API key and the list of SteamID64 values.
+3. (Optional) Adjust metadata language, price region and request delay if you need throttling.
+4. Keep “Download metadata automatically” enabled to pull imagery from Steam.
+5. Save and trigger `Library → Update game libraries`.
 
-## Estructura del proyecto
+## Project structure
 
-- `SteamFamilyLibraryPlugin.cs`: punto de entrada de la librería Playnite.
-- `Configuration/`: ajustes, vista y viewmodel para la interfaz de configuración.
-- `Services/`: integraciones con la Web API de Steam, almacenamiento en caché y proveedor de metadatos.
-- `Models/`: DTOs para transformar las respuestas de Steam.
-- `Cache/`: persistencia del catálogo familiar en disco.
-- `extension.yaml`: manifiesto requerido por Playnite.
+- `SteamFamilyLibraryPlugin.cs`: Playnite entry point and library implementation.
+- `Configuration/`: settings model, WPF view and view model.
+- `Services/`: Steam Web API client, metadata downloader, cache and helpers.
+- `Models/`: DTOs for Steam responses and aggregated family data.
+- `Cache/`: serialization helpers for `steamFamilyGamesCache.json`.
+- `extension.yaml`: plugin manifest consumed by Playnite.
 
-## Construir
+## Build
 
 ```powershell
 dotnet restore SteamFamilyLibrary/SteamFamilyLibrary.csproj
 dotnet build SteamFamilyLibrary/SteamFamilyLibrary.csproj -c Release
 ```
 
-## Instalación
+## Installation
 
-### Opción 2: archivo `.pext`
+### Option 1: manual copy
 
-En la pestaña **Releases** de este repositorio encontrarás un `.pext` empaquetado (ej. `SteamFamilyGroup-v0.1.0-beta.pext`). Descárgalo y ejecutalo dandole doble click.
+1. Create a folder inside `Playnite/Extensions`, for example `SteamFamilyGroup`.
+2. Copy **all** files from `SteamFamilyLibrary/bin/Release/net472/` (SteamFamilyLibrary.dll plus every dependency such as `Newtonsoft.Json.dll`, `System.Text.Json.dll`, etc.).
+3. Copy `extension.yaml` into the same folder.
+4. Restart Playnite or use `For developers → Reload scripts`.
 
-### Opción 1: copia manual
+### Option 2: `.pext` package
 
-1. Crea una carpeta dentro de `Playnite/Extensions`, por ejemplo `SteamFamilyGroup`.
-2. Copia **todos** los archivos generados en `SteamFamilyLibrary/bin/Release/net472/` (SteamFamilyLibrary.dll y el resto de dependencias `Newtonsoft.Json.dll`, `System.Text.Json.dll`, etc.).
-3. Copia `extension.yaml` a la misma carpeta.
-4. Reinicia Playnite o usa `Para desarrolladores → Recargar scripts`.
-
+Check the **Releases** tab for a ready-made `.pext` (for example `SteamFamilyGroup-v0.1.0-beta.pext`). Download it and simply double-click the file (or, if you prefer, open Playnite and choose `Extensions → Install from file`) to install it.

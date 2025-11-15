@@ -68,7 +68,7 @@ namespace SteamFamilyLibrary.Services
                     metadata.Links = new List<Link>();
                 }
 
-                metadata.Links.Add(new Link("Capturas de pantalla", $"https://store.steampowered.com/app/{appId}/#app_{appId}_screenshots"));
+                metadata.Links.Add(new Link("Screenshots", $"https://store.steampowered.com/app/{appId}/#app_{appId}_screenshots"));
             }
 
             return metadata;
@@ -81,7 +81,7 @@ namespace SteamFamilyLibrary.Services
             var website = data?["website"]?.Value<string>();
             if (!string.IsNullOrWhiteSpace(website))
             {
-                links.Add(new Link("Sitio oficial", website));
+                links.Add(new Link("Official site", website));
             }
 
             var storeUrl = data?["steam_appid"]?.Value<uint?>();
