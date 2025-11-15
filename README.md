@@ -51,5 +51,5 @@ Check the **Releases** tab for a ready-made `.pext` (for example `SteamFamilyGro
 1. Create a folder inside `Playnite/Extensions`, for example `SteamFamilyGroup`.
 2. Copy **all** files from `SteamFamilyLibrary/bin/Release/net472/` (SteamFamilyLibrary.dll plus every dependency such as `Newtonsoft.Json.dll`, `System.Text.Json.dll`, etc.).
 3. Copy `extension.yaml` into the same folder.
-4. Restart Playnite or use `For developers → Reload scripts`.
+4. Restart Playnite.
 
