@@ -44,7 +44,7 @@ dotnet build SteamFamilyLibrary/SteamFamilyLibrary.csproj -c Release
 
 ### Option 1: `.pext` package
 
-Check the **Releases** tab for a ready-made `.pext` (for example `SteamFamilyGroup-v0.1.0-beta.pext`). Download it and simply double-click the file
+Check the **Releases** tab for a ready-made `.pext` (for example `SteamFamilyGroup-v0.1.1-beta.pext`). Download it and simply double-click the file
 
 ### Option 2: manual copy
 
