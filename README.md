@@ -42,13 +42,14 @@ dotnet build SteamFamilyLibrary/SteamFamilyLibrary.csproj -c Release
 
 ## Installation
 
-### Option 1: manual copy
+### Option 1: `.pext` package
+
+Check the **Releases** tab for a ready-made `.pext` (for example `SteamFamilyGroup-v0.1.0-beta.pext`). Download it and simply double-click the file
+
+### Option 2: manual copy
 
 1. Create a folder inside `Playnite/Extensions`, for example `SteamFamilyGroup`.
 2. Copy **all** files from `SteamFamilyLibrary/bin/Release/net472/` (SteamFamilyLibrary.dll plus every dependency such as `Newtonsoft.Json.dll`, `System.Text.Json.dll`, etc.).
 3. Copy `extension.yaml` into the same folder.
 4. Restart Playnite or use `For developers → Reload scripts`.
 
-### Option 2: `.pext` package
-
-Check the **Releases** tab for a ready-made `.pext` (for example `SteamFamilyGroup-v0.1.0-beta.pext`). Download it and simply double-click the file (or, if you prefer, open Playnite and choose `Extensions → Install from file`) to install it.
